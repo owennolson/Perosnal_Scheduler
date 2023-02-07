@@ -9,7 +9,7 @@ var time = dayjs().format('HH:MM:SS a');
 //]
 
 $(function () {
-  var currentTime = dayjs().format('HH:MM:SS a');
+  var currentTime = dayjs().format('HH');
     // TODO: Add a listener for click events on the save button. This code should
     // use the id in the containing time-block as a key to save the user input in
     // local storage. HINT: What does `this` reference in the click listener
@@ -32,22 +32,82 @@ $(function () {
       var hour3 = 15;
       var hour4 = 16;
       var hour5 = 17;
-
-      if (hour9 > currentTime('HH')) {
+console.log(currentTime);
+      if (hour9 < currentTime) {
         $('#hour-9').addClass('past');
-      }else if(hour9 == time('HH')) {
-        $('#hour-9').addClass('pressent');
+      }else if(hour9 == currentTime) {
+        $('#hour-9').addClass('present');
       }else {
         $('#hour-9').addClass('future');
       }
+      if (hour10 < currentTime) {
+        $('#hour-10').addClass('past');
+      }else if(hour10 == currentTime) {
+        $('#hour-10').addClass('present');
+      }else {
+        $('#hour-10').addClass('future');
+      }
+      if (hour11 < currentTime) {
+        $('#hour-11').addClass('past');
+      }else if(hour11 == currentTime) {
+        $('#hour-11').addClass('present');
+      }else {
+        $('#hour-11').addClass('future');
+      }
+      if (hour12 < currentTime) {
+        $('#hour-12').addClass('past');
+      }else if(hour12 == currentTime) {
+        $('#hour-12').addClass('present');
+      }else {
+        $('#hour-12').addClass('future');
+      }
+      if (hour1 < currentTime) {
+        $('#hour-1').addClass('past');
+      }else if(hour1 == currentTime) {
+        $('#hour-1').addClass('present');
+      }else {
+        $('#hour-1').addClass('future');
+      }
+      if (hour2 < currentTime) {
+        $('#hour-2').addClass('past');
+      }else if(hour2 == currentTime) {
+        $('#hour-2').addClass('present');
+      }else {
+        $('#hour-2').addClass('future');
+      }
+      if (hour3 < currentTime) {
+        $('#hour-3').addClass('past');
+      }else if(hour3 == currentTime) {
+        $('#hour-3').addClass('present');
+      }else {
+        $('#hour-3').addClass('future');
+      }
+      if (hour4 < currentTime) {
+        $('#hour-4').addClass('past');
+      }else if(hour4 == currentTime) {
+        $('#hour-4').addClass('present');
+      }else {
+        $('#hour-4').addClass('future');
+      }
+      if (hour5 < currentTime) {
+        $('#hour-5').addClass('past');
+      }else if(hour5 == currentTime) {
+        $('#hour-5').addClass('present');
+      }else {
+        $('#hour-5').addClass('future');
+      }
+
 //      for (i = 0; i < hourBlock.length; i++) {
 //        if (hourBlock > time) {
 //        }
       }
-    });
+      applyTimeCompare();
+
+ 
     //
     // TODO: Add code to get any user input that was saved in localStorage and set
     // the values of the corresponding textarea elements. HINT: How can the id
     // attribute of each time-block be used to do this?
     //
     // TODO: Add code to display the current date in the header of the page.
+  });
