@@ -1,28 +1,46 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
-var time = dayjs().format('HH:MM:SS a');
-//var hourBlock = [
-//  {
-//    hour9: document.getElementById('hour-9'),
-//  }
-//]
 
 $(function () {
   var currentTime = dayjs().format('HH');
+
+  var time = dayjs().format('dddd, MMMM D');
+  $('#currentDay').text(time);
+
     // TODO: Add a listener for click events on the save button. This code should
     // use the id in the containing time-block as a key to save the user input in
     // local storage. HINT: What does `this` reference in the click listener
     // function? How can DOM traversal be used to get the "hour-x" id of the
     // time-block containing the button that was clicked? How might the id be
-    // useful when saving the description in local storage?
-    //
-    // TODO: Add code to apply the past, present, or future class to each time
-    // block by comparing the id to the current hour. HINTS: How can the id
-    // attribute of each time-block be used to conditionally add or remove the
-    // past, present, and future classes? How can Day.js be used to get the
-    // current hour in 24-hour time?
+    // useful when saving the description in local storage
+    let saveBtn = document.querySelectorAll('.btn');
+
+
+    var text9 = localStorage.getItem("text9");
+    var text10 = localStorage.getItem("text10");
+    var text11 = localStorage.getItem("text11");
+    var text12 = localStorage.getItem("text12");
+    var text1 = localStorage.getItem("text1");
+    var text2 = localStorage.getItem("text2");
+    var text3 = localStorage.getItem("text3");
+    var text4 = localStorage.getItem("text4");
+    var text5 = localStorage.getItem("text5");
+
+    function saveInput(){
+      localStorage.setItem("text9", text9);
+      localStorage.setItem("text10", text10);
+      localStorage.setItem("text11", text11);
+      localStorage.setItem("text12", text12);
+      localStorage.setItem("text1", text1);
+      localStorage.setItem("text2", text2);
+      localStorage.setItem("text3", text3);
+      localStorage.setItem("text4", text4);
+      localStorage.setItem("text5", text5);
+
+    }
+    
+
+    //The function that applies the colors to the time blocks
     function applyTimeCompare() {
+      //sets the variables for block times
       var hour9 = 09;
       var hour10 = 10;
       var hour11 = 11;
@@ -32,7 +50,7 @@ $(function () {
       var hour3 = 15;
       var hour4 = 16;
       var hour5 = 17;
-console.log(currentTime);
+      //checks to see if time block is in past, present or future
       if (hour9 < currentTime) {
         $('#hour-9').addClass('past');
       }else if(hour9 == currentTime) {
@@ -96,18 +114,14 @@ console.log(currentTime);
       }else {
         $('#hour-5').addClass('future');
       }
-
-//      for (i = 0; i < hourBlock.length; i++) {
-//        if (hourBlock > time) {
-//        }
       }
       applyTimeCompare();
 
- 
     //
     // TODO: Add code to get any user input that was saved in localStorage and set
     // the values of the corresponding textarea elements. HINT: How can the id
     // attribute of each time-block be used to do this?
     //
     // TODO: Add code to display the current date in the header of the page.
+    saveBtn.addEventListener('click', saveInput);
   });
