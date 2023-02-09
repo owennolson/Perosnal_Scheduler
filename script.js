@@ -11,29 +11,41 @@ $(function () {
     // function? How can DOM traversal be used to get the "hour-x" id of the
     // time-block containing the button that was clicked? How might the id be
     // useful when saving the description in local storage
-    let saveBtn = document.querySelectorAll('.btn');
+    let saveBtn = $('.btn');
+    let textArea = $('.description');
 
 
-    var text9 = localStorage.getItem("text9");
-    var text10 = localStorage.getItem("text10");
-    var text11 = localStorage.getItem("text11");
-    var text12 = localStorage.getItem("text12");
-    var text1 = localStorage.getItem("text1");
-    var text2 = localStorage.getItem("text2");
-    var text3 = localStorage.getItem("text3");
-    var text4 = localStorage.getItem("text4");
-    var text5 = localStorage.getItem("text5");
+
+    //var text9 = localStorage.getItem("text9", input.value);
+    // var text10 = localStorage.getItem("text10");
+    // var text11 = localStorage.getItem("text11");
+    // var text12 = localStorage.getItem("text12");
+    // var text1 = localStorage.getItem("text1");
+    // var text2 = localStorage.getItem("text2");
+    // var text3 = localStorage.getItem("text3");
+    // var text4 = localStorage.getItem("text4");
+    // var text5 = localStorage.getItem("text5");
+    //var storedInput = localStorage.getItem(textArea);
+
 
     function saveInput(){
-      localStorage.setItem("text9", text9);
-      localStorage.setItem("text10", text10);
-      localStorage.setItem("text11", text11);
-      localStorage.setItem("text12", text12);
-      localStorage.setItem("text1", text1);
-      localStorage.setItem("text2", text2);
-      localStorage.setItem("text3", text3);
-      localStorage.setItem("text4", text4);
-      localStorage.setItem("text5", text5);
+      var text9 = localStorage.getItem("text9", input.value);
+      textArea.each(function (potato, input) {
+        console.log(input.id , input.value);
+        localStorage.setItem(input.id, input.value);
+
+
+      });
+
+      // localStorage.setItem("text9", text9);
+      // localStorage.setItem("text10", text10);
+      // localStorage.setItem("text11", text11);
+      // localStorage.setItem("text12", text12);
+      // localStorage.setItem("text1", text1);
+      // localStorage.setItem("text2", text2);
+      // localStorage.setItem("text3", text3);
+      // localStorage.setItem("text4", text4);
+      // localStorage.setItem("text5", text5);
 
     }
     
@@ -51,6 +63,7 @@ $(function () {
       var hour4 = 16;
       var hour5 = 17;
       //checks to see if time block is in past, present or future
+      $("").each()
       if (hour9 < currentTime) {
         $('#hour-9').addClass('past');
       }else if(hour9 == currentTime) {
@@ -123,5 +136,5 @@ $(function () {
     // attribute of each time-block be used to do this?
     //
     // TODO: Add code to display the current date in the header of the page.
-    saveBtn.addEventListener('click', saveInput);
+    saveBtn.on('click', saveInput);
   });
