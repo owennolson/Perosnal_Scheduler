@@ -1,53 +1,33 @@
 
 $(function () {
+  //sets the current hour
   var currentTime = dayjs().format('HH');
 
+  //sets the date 
   var time = dayjs().format('dddd, MMMM D');
   $('#currentDay').text(time);
-
-    // TODO: Add a listener for click events on the save button. This code should
-    // use the id in the containing time-block as a key to save the user input in
-    // local storage. HINT: What does `this` reference in the click listener
-    // function? How can DOM traversal be used to get the "hour-x" id of the
-    // time-block containing the button that was clicked? How might the id be
-    // useful when saving the description in local storage
     let saveBtn = $('.btn');
     let textArea = $('.description');
 
-
-
-    //var text9 = localStorage.getItem("text9", input.value);
-    // var text10 = localStorage.getItem("text10");
-    // var text11 = localStorage.getItem("text11");
-    // var text12 = localStorage.getItem("text12");
-    // var text1 = localStorage.getItem("text1");
-    // var text2 = localStorage.getItem("text2");
-    // var text3 = localStorage.getItem("text3");
-    // var text4 = localStorage.getItem("text4");
-    // var text5 = localStorage.getItem("text5");
-    //var storedInput = localStorage.getItem(textArea);
-
-
+    //saves the text input
     function saveInput(){
-      var text9 = localStorage.getItem("text9", input.value);
-      textArea.each(function (potato, input) {
-        console.log(input.id , input.value);
-        localStorage.setItem(input.id, input.value);
-
-
+      $('.saveBtn').on("click", function(){
+        var value = $(this).siblings(".description").val();
+        var time = $(this).parent().attr("id").split("-")[1];
+        localStorage.setItem(time,value);
       });
-
-      // localStorage.setItem("text9", text9);
-      // localStorage.setItem("text10", text10);
-      // localStorage.setItem("text11", text11);
-      // localStorage.setItem("text12", text12);
-      // localStorage.setItem("text1", text1);
-      // localStorage.setItem("text2", text2);
-      // localStorage.setItem("text3", text3);
-      // localStorage.setItem("text4", text4);
-      // localStorage.setItem("text5", text5);
-
     }
+
+    //keeps the text input on the page
+    $('#hour-9 .description').val(localStorage.getItem("9"));
+    $('#hour-10 .description').val(localStorage.getItem("10"));
+    $('#hour-11 .description').val(localStorage.getItem("11"));
+    $('#hour-12 .description').val(localStorage.getItem("12"));
+    $('#hour-1 .description').val(localStorage.getItem("1"));
+    $('#hour-2 .description').val(localStorage.getItem("2"));
+    $('#hour-3 .description').val(localStorage.getItem("3"));
+    $('#hour-4 .description').val(localStorage.getItem("4"));
+    $('#hour-5 .description').val(localStorage.getItem("5"));
     
 
     //The function that applies the colors to the time blocks
@@ -130,11 +110,6 @@ $(function () {
       }
       applyTimeCompare();
 
-    //
-    // TODO: Add code to get any user input that was saved in localStorage and set
-    // the values of the corresponding textarea elements. HINT: How can the id
-    // attribute of each time-block be used to do this?
-    //
-    // TODO: Add code to display the current date in the header of the page.
+      //ads on click event listener to saveBtn
     saveBtn.on('click', saveInput);
   });
